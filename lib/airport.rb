@@ -1,3 +1,4 @@
+
 class Airport
 
   def initialize(capacity)
@@ -7,7 +8,7 @@ class Airport
 
   def land(plane)
     raise 'Cannot land plane: airport is full' if full?
-    raise 'Cannot land plane: weather is story' if stormy?
+    raise 'Cannot land plane: weather is stormy' if stormy?
     @planes << plane
   end
 
@@ -22,7 +23,7 @@ private
   end
 
   def stormy?
-  rand(1..8) > 5
+  Weather.new.stormy?
   end
 
 end
