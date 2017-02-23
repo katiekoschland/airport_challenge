@@ -12,4 +12,14 @@ describe Airport do
     expect(airport).to respond_to(:land).with(1).argument
   end
 
+
+   it 'instructs a plane to take off' do
+    expect(airport).to respond_to(:take_off).with(1).argument
+    end
+    
+
+
+
+  # I want to instruct a plane to take off from an airport and confirm that it is no longer in the airport
+
 end
