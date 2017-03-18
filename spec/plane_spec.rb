@@ -4,7 +4,7 @@ require 'weather'
 
 
 describe Plane do
-  let(:airport) { Airport.new(20, weather) }
+  let(:airport) { Airport.new(weather, 20) }
   let(:plane) { double :plane}
   let(:weather) { Weather.new }
 
