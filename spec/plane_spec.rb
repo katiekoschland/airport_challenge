@@ -18,6 +18,7 @@ describe Plane do
     end
 
     it 'so planes take off from airports, instruct a plane to take off' do
+      airport.land(plane)
       expect{ airport.take_off(plane) }.not_to raise_error
     end
   end
