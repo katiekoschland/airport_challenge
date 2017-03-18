@@ -1,8 +1,9 @@
 
 class Airport
 
-  def initialize(capacity)
+  def initialize(capacity, weather)
     @capacity = capacity
+    @weather = weather
     @planes = []
   end
 
@@ -16,14 +17,14 @@ class Airport
     raise 'Cannot take off: weather is stormy' if stormy?
   end
 
-private
+  private
 
   def full?
     @planes.length >= @capacity
   end
 
   def stormy?
-  Weather.new.stormy?
+    @weather.stormy?
   end
 
 end

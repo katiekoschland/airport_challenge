@@ -1,14 +1,14 @@
 require 'airport'
 
 describe Airport do
-  let(:airport) { Airport.new(20) }
+  let(:airport) { Airport.new(20, weather) }
   let(:plane) { double :plane}
-  let(:weather) { Weather }
+  let(:weather) { Weather.new }
 
 describe '#land' do
   context 'when not stormy' do
     before do
-      allow_any_instance_of(weather).to receive(:stormy?). and_return false
+      allow(weather).to receive(:stormy?). and_return false
     end
 
     it 'instructs a plane to land' do
@@ -27,7 +27,7 @@ describe '#land' do
 
  context 'when stormy' do
    it 'raises an error ' do
-   allow_any_instance_of(weather).to receive(:stormy?).and_return true
+   allow(weather).to receive(:stormy?).and_return true
    expect {airport.land(plane) }.to raise_error 'Cannot land plane: weather is stormy'
  end
  end
@@ -42,7 +42,7 @@ end
 
    context 'when stormy' do
     before do
-     allow_any_instance_of(weather).to receive(:stormy?).and_return true
+     allow(weather).to receive(:stormy?).and_return true
     end
 
      it 'raises an error' do
