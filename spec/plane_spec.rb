@@ -1,25 +1,22 @@
 require 'plane'
-require 'airport'
-require 'weather'
 
 
 describe Plane do
-  let(:airport) { Airport.new(weather, 20) }
-  let(:plane) { double :plane}
-  let(:weather) { Weather.new }
+  subject(:plane) { described_class.new}
 
-  context 'when not stormy' do
-    before do
-      allow(weather).to receive(:stormy?). and_return false
+  describe '#take_off' do
+    it { is_expected.to respond_to :take_off }
+
+    it 'raises an error if already flying' do
+      expect{ plane.take_off }.to raise_error 'Plane cannot take off: plane already flying'
     end
+  end
 
-    it 'so planes land at airports, instructs a plane to land' do
-      expect{ airport.land(plane) }.not_to raise_error
-    end
+  describe '#airport' do
+    it { is_expected.to respond_to :airport }
 
-    it 'so planes take off from airports, instruct a plane to take off' do
-      airport.land(plane)
-      expect{ airport.take_off(plane) }.not_to raise_error
+    it 'raises an error if already flying' do
+      expect { plane.airport }.to raise_error 'Plane cannot be at an airport: plane already flying'
     end
   end
 end
